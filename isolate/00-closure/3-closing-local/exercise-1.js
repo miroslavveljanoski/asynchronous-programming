@@ -2,21 +2,23 @@
 
 const usesParentVariable = (param) => {
   // write me!
+  const localVariable = 'local';
+  return param + parentScopeVariable + localVariable;
 };
 
-let parentScopeVariable = "parentScope";
+let parentScopeVariable = 'parentScope';
 
-const result1 = usesParentVariable("arg");
-console.assert(result1 === "argparentScopelocal", "assert 1");
+const result1 = usesParentVariable('arg');
+console.assert(result1 === 'argparentScopelocal', 'assert 1');
 
 const result2 = usesParentVariable(undefined);
-console.assert(result2 === "undefinedparentScopelocal", "assert 2");
+console.assert(result2 === 'undefinedparentScopelocal', 'assert 2');
 
-parentScopeVariable = usesParentVariable("spoon");
-console.assert(parentScopeVariable === _, "assert 3");
+parentScopeVariable = usesParentVariable('spoon');
+console.assert(parentScopeVariable === 'spoonparentScopelocal', 'assert 3');
 
-const result3 = usesParentVariable(_);
-console.assert(result3 === "spoonparentScopelocallocal", "assert 4");
+const result3 = usesParentVariable('');
+console.assert(result3 === 'spoonparentScopelocallocal', 'assert 4');
 
-parentScopeVariable = usesParentVariable("spoon");
-console.assert(parentScopeVariable === _, "assert 5");
+parentScopeVariable = usesParentVariable('spoon');
+console.assert(parentScopeVariable === 'spoonspoonparentScopelocallocal', 'assert 5');
